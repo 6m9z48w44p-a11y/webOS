@@ -307,8 +307,16 @@ const notesApp = (body) => {
   const previewButton = body.querySelector("#pv");
 
   const updateWordCount = () => {
-    const words = textarea.value.split(" ").length;
-    wordCount.textContent = `${words} words`;
+     const words=textarea.value.replace(/[\r\n]+/gm, " ").trim().split(" ");
+    
+    let c=0;
+     for(let i=0;i<words.length;i++){
+      
+        if(words[i].length!==0){
+          c++;
+        }
+     }
+    wordCount.textContent = `${c} words`;
   };
   updateWordCount();
 
